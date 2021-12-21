@@ -1,1 +1,319 @@
-Feel free to contribute to Kaos.land website
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kaosland</title>
+  <meta name="description" content="Kaosland community website.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="Kaosland">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Kaosland community website.">
+  <meta property="og:image" content="img/Kaosland.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <style>
+      body{
+        text-align: center;        
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.more-pens {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
+a.white-mode, a.white-mode:link, a.white-mode:visited, a.white-mode:active {
+  font-family: "Montserrat";
+  font-size: 12px;
+  text-decoration: none;
+  background: #212121;
+  padding: 4px 8px;
+  color: #f7f7f7;
+}
+a.white-mode:hover, a.white-mode:link:hover, a.white-mode:visited:hover, a.white-mode:active:hover {
+  background: #edf3f8;
+  color: #212121;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  color: #edf3f8;
+}
+
+.title {
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: "Montserrat";
+  text-align: center;
+  width: 100%;
+}
+.title h1 {
+  position: relative;
+  color: #FFF;
+  font-weight: 100;
+  font-size: 90px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 0 10px #ff006c, 0 0 20px #ff006c, 0 0 30px #ff006c, 0 0 40px #ff417d, 0 0 70px #ff417d, 0 0 80px #ff417d, 0 0 100px #ff417d, 0 0 150px #ff417d;
+}
+.title h1 span {
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+}
+.title h3 {
+  font-weight: 200;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+}
+
+.codepen-promotion:active, .codepen-promotion:hover, .codepen-promotion:link, .codepen-promotion:visited {
+  position: absolute;
+  display: block;
+  width: 200px;
+  z-index: 111;
+  right: 40px;
+  bottom: 40px;
+}
+
+.codepen-promotion__image {
+  width: 100%;
+}
+  </style>
+
+
+</head>
+
+<body>
+  <!-- your content here... -->
+
+<div class="title">
+<h3>2022</h3>
+<h1>KAOSLAND</h1>
+<h3>Kaosland community website. First commuinty-owned metaverse on Bit.Country Pioneer</h3>
+</div>
+
+
+  <p style="margin: auto; width: 800px; margin-top: 150px;">
+
+    Together we are one team and create chaos side by side. Its coordinate on the Pioneer map is P(1, 0), the very first coordinate next to the origin.
+
+    Kaoslanders are expecting chaos on Kusama, they are risk takers and visionaries. The citizens are literally taking the responsibility to pioneer the rest of the network and lead by example.
+    
+    Kaosland metaverse will be the very first community owned, partially treasury owned metaverse, with an initial ~26,000 stakeholders, and taking up ~30% of the total land block supply on Pioneer. Very likely, it will be the largest metaverse on the Bit.Country Pioneer Network.
+    
+  </p>
+
+  <p>
+    <img src="img/Kaosland.jpg" width="800px" />
+  </p>
+
+  <p>Feel free to contribute to this repo</p>
+
+  <p><a href="https://twitter.com/bc_kaosland" style="color: lightblue;">Twitter</a></p>
+  <script>
+
+//   STARDUST by Marco Dell’Anna
+let particles = []
+let microparticles = []
+
+const c1 = createCanvas({width: $(window).width(), height: $(window).height()})
+
+const tela   = c1.canvas;
+const canvas = c1.context;
+
+// $("body").append(tela);
+$("body").append(c1.canvas);
+
+
+class Particle{
+  constructor(canvas){
+    this.random = Math.random()
+    this.random1 = Math.random()
+    this.random2 = Math.random()
+    this.progress = 0;
+    this.canvas = canvas;
+    this.life = 1000 + (Math.random()*3000)
+
+    this.x = ($(window).width()/2)  + (Math.random()*20 - Math.random()*20)
+    this.y = $(window).height()
+    this.s = 2 + Math.random();
+    this.w = $(window).width()
+    this.h = $(window).height()
+    this.direction = this.random > .5 ? -1 : 1
+    this.radius = 1 + (3 * this.random)
+    this.color  = "#ff417d"
+
+    this.ID = setInterval(function(){
+      microparticles.push(new microParticle(c1.context,{
+        x: this.x,
+        y: this.y
+      }))
+    }.bind(this), this.random*20)
+
+    setTimeout(function(){
+      clearInterval(this.ID)
+    }.bind(this), this.life )
+  }
+
+  render(){
+    this.canvas.beginPath();
+    this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    // this.canvas.lineWidth = 2;
+    this.canvas.shadowOffsetX = 0;
+    this.canvas.shadowOffsetY = 0;
+    // this.canvas.shadowBlur = 6;
+    this.canvas.shadowColor = "#000000";
+    this.canvas.fillStyle = this.color;
+    this.canvas.fill();
+    this.canvas.closePath();
+  }
+
+  move(){
+    this.x -= (this.direction) * Math.sin(this.progress/((this.random1*430))) * this.s;
+    this.y -= Math.cos(this.progress/this.h) * this.s;
+
+    if(this.x < 0 || this.x > this.w - this.radius){
+      clearInterval(this.ID)
+      return false
+    }
+
+    if(this.y < 0){
+      clearInterval(this.ID)
+      return false
+    }
+    this.render()
+    this.progress++
+    return true
+  }
+}
+
+class microParticle{
+  constructor(canvas, options){
+    this.random = Math.random()
+    this.random1 = Math.random()
+    this.random2 = Math.random()
+    this.progress = 0;
+    this.canvas = canvas;
+
+    this.x = options.x
+    this.y = options.y
+    this.s = 2 + Math.random() * 3;
+    this.w = $(window).width()
+    this.h = $(window).height()
+    this.radius = 1 + this.random*0.5
+    this.color  = "#4EFCFE";//this.random > .5 ? "#a9722c" : "#FFFED7"
+  }
+
+  render(){
+    this.canvas.beginPath();
+    this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+    this.canvas.lineWidth = 2;
+    this.canvas.fillStyle = this.color;
+    this.canvas.fill();
+    this.canvas.closePath();
+  }
+
+  move(){
+    this.x -= Math.sin(this.progress/(100/(this.random1 - this.random2*10))) * this.s;
+    this.y += Math.cos(this.progress/this.h) * this.s;
+
+    if(this.x < 0 || this.x > this.w - this.radius){
+      return false
+    }
+
+    if(this.y > this.h){
+      return false
+    }
+    this.render()
+    this.progress++
+    return true
+  }
+}
+
+var random_life = 1000
+
+
+setInterval(
+  function(){
+    particles.push(new Particle(canvas))
+    random_life = 2000 * Math.random()
+  }.bind(this)
+, random_life)
+
+function clear(){
+  let grd = canvas.createRadialGradient(tela.width/2, tela.height/2, 0, tela.width/2, tela.height/2, tela.width);
+        grd.addColorStop(0,"rgba(82,42,114,1)");
+        grd.addColorStop(1,"rgba(26,14,4,0)");
+    // Fill with gradient
+    canvas.globalAlpha=0.16;
+    canvas.fillStyle=grd;
+    canvas.fillRect(0, 0, tela.width, tela.height);
+}
+
+function blur(ctx,canvas, amt) {
+  // ctx.filter = `blur(${amt}px)`
+  // ctx.drawImage(canvas, 0, 0)
+  // ctx.filter = 'none'
+}
+
+function update(){
+  clear();
+  particles = particles.filter(function(p) {
+    return p.move()
+  })
+  microparticles = microparticles.filter(function(mp) {
+    return mp.move()
+  })
+  requestAnimationFrame(update.bind(this))
+}
+
+
+function createCanvas(properties){
+  let canvas = document.createElement('canvas');
+      canvas.width = properties.width;
+      canvas.height = properties.height;
+  let context = canvas.getContext('2d');
+  return {
+    canvas: canvas,
+    context: context
+  }
+}
+update()
+
+  </script>
+</body>
+</html>
+
+
+
